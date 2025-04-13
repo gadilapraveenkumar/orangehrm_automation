@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from utils.browser_manager import BrowserManager
 import os
 from behave.runner import Context
@@ -45,13 +43,3 @@ def after_scenario(context: Context, scenario):
 
 def after_all(context):
     print("All scenarios completed.")
-
-def take_screenshot(context,name="screenShot"):
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"{name}_{timestamp}.png"
-    screenshot_dir = "screenshots"
-
-    os.makedirs(screenshot_dir,exist_ok=True)
-    filepath = os.path.join(screenshot_dir, filename)
-    context.browser.save_screenshot(filepath)
-    print(f"Screenshot saved to: {filepath}")
